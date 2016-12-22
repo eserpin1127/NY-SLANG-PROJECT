@@ -1,36 +1,13 @@
 import java.util.Random;
 
-/**
- * The completed version of the Magpie activity 5.
- * A program to carry on conversations with a human user.
- * This version:
- *<ul><li>
- * 		Uses advanced search for keywords 
- *</li><li>
- * 		Will transform statements as well as react to keywords
- *</li></ul>
- * This version uses an array to hold the default responses.
- * @author Laurie White
- * @version April 2012
- */
 public class Magpie5
 {
-	/**
-	 * Get a default greeting 	
-	 * @return a greeting
-	 */	
+
 	public String getGreeting()
 	{
 		return "Hello, let's talk.";
 	}
 	
-	/**
-	 * Gives a response to a user statement
-	 * 
-	 * @param statement
-	 *            the user statement
-	 * @return a response based on the rules given
-	 */
 	public String getResponse(String statement)
 	{
 		String response = "";
@@ -38,7 +15,14 @@ public class Magpie5
 		{
 			response = "Say something, please.";
 		}
-
+		else if (findKeyword(statement, "hi") >= 0
+				|| findKeyword(statement, "hello") >= 0
+				|| findKeyword(statement, "Hi") >= 0
+				|| findKeyword(statement, "Hello") >= 0)
+		{
+			response = "What are you doing today?";
+		}
+		
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Why so negative?";
@@ -114,7 +98,7 @@ public class Magpie5
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would it mean to " + restOfStatement + "?";
+		return "Why do you want to " + restOfStatement + "?";
 	}
 
 	
